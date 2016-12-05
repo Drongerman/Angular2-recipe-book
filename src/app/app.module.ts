@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,11 @@ import { CmpAComponent } from './service/cmp-a.component';
 import { CmpBComponent } from './service/cmp-b.component';
 import {DataService} from "./service/data.service";
 import {LogService} from "./service/log.service";
+import {RecipeService} from "./recipes/recipe.service";
+import {ShoppingListService} from "./shopping-list/shopping-list.service";
+import {routing} from "./app.routing";
+import {RecipeEditComponent} from "./recipes/recipe-edit/recipe-edit.component";
+import { RecipeStartComponent } from './recipes/recipe-start.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +35,18 @@ import {LogService} from "./service/log.service";
     ShoppingListAddComponent,
     DropdownDirective,
     CmpAComponent,
-    CmpBComponent
+    CmpBComponent,
+    RecipeEditComponent,
+    RecipeStartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing,
+    ReactiveFormsModule
   ],
-  providers: [LogService, DataService],
+  providers: [LogService, DataService, RecipeService, ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
